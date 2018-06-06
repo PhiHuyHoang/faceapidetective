@@ -11,7 +11,7 @@ assert subscription_key
 face_api_url = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect'
 
 # Set image_url to the URL of an image that you want to analyze.
-image_url = 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/770xh/matt2.jpg'
+image_url = 'http://womenpla.net/wp-content/themes/woman-planet/lib/timthumb.php?src=http%3A%2F%2Fwomenpla.net%2Fwp-content%2Fuploads%2F2015%2F12%2Fwomen-crying.jpg&w=370'
 
 import requests
 #from ipython.display import HTML
@@ -51,7 +51,8 @@ for face in faces:
     ax.axes.add_patch(p)
     plt.text(origin[0], origin[1], "%s, %d"%(fa["gender"].capitalize(), fa["age"]),
              fontsize=20, weight="bold", va="bottom")
-    print(fa["gender"].capitalize(), fa["age"],max(fa["emotion"]))
+
+    print(fa["gender"].capitalize(), fa["age"],max(fa["emotion"], key=fa["emotion"].get))
 _ = plt.axis("off")
 
 
